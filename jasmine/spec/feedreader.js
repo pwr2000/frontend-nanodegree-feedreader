@@ -31,16 +31,40 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+         function testURLisNotEmpty(allFeeds) {
+            expect(allFeeds.url).toMatch(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:ww‌​w.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?‌​(?:[\w]*))?)/);
+         } // Use Regex to ensure allFeeds.URL is not empty and follows URL convention
+
+         // iterate allFeeds array to perform check
+         it('has URL link in each feed', function() {
+            for (i = 0; i < allFeeds.length; i++) {
+                testURLisNotEmpty(allFeeds[i]);
+            }
+         });
 
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+         function testNameisDefinedandNotEmpty(allFeeds) {
+            expect(allFeeds.name).toBeDefined(); // First check: to see if allFeeds.name variable is defined
+            expect(allFeeds.name.length).not.toEqual(0); // Second check: to see if name exists by checking string length
+         }
+
+         // iterate allFeeds array to perform check
+         it('Name is defined and not empty', function() {
+            for (i = 0; i < allFeeds.length; i++) {
+                testNameisDefinedandNotEmpty(allFeeds[i]);
+            }
+         });
+
     });
 
 
     /* TODO: Write a new test suite named "The menu" */
+    describe ('Menu', function() {
+        
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -53,6 +77,9 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          
+    });
+
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
