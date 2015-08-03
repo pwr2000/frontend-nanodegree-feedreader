@@ -31,17 +31,18 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+
+         // Expect URL to match HTTP Regex
          function testURLisNotEmpty(allFeeds) {
             expect(allFeeds.url).toMatch(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:ww‌​w.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?‌​(?:[\w]*))?)/);
-         } // Use Regex to ensure allFeeds.URL is not empty and follows URL convention
+         }
 
-         // iterate allFeeds array to perform check
+         // Iterate allFeeds array to perform check
          it('has URL link in each feed', function() {
             for (i = 0; i < allFeeds.length; i++) {
                 testURLisNotEmpty(allFeeds[i]);
             }
          });
-
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -52,7 +53,7 @@ $(function() {
             expect(allFeeds.name.length).not.toEqual(0); // Second check: to see if name exists by checking string length
          }
 
-         // iterate allFeeds array to perform check
+         // Iterate allFeeds array to perform check
          it('Name is defined and not empty', function() {
             for (i = 0; i < allFeeds.length; i++) {
                 testNameisDefinedandNotEmpty(allFeeds[i]);
@@ -105,14 +106,14 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        // set beforeEach function for async support
+        // Set beforeEach function for async support
         beforeEach(function(done) {
             loadFeed(0, function() {
                 done();
             });
         });
 
-        // count number of entries after async call is done
+        // Count number of entries after async call is done and expect to be > 1
         it('loadFeed has more than one entry', function(done) {
             var entries = $('.feed a').children('.entry');
             expect(entries.length).toBeGreaterThan(0);
@@ -126,6 +127,11 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+         // Ensure content has changed when new feed is loaded
+         it('New Feed Selection', function() {
+
+         });
 
     });
 
