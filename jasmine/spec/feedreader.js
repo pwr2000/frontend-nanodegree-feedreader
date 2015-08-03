@@ -82,13 +82,14 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
+        // Click event trigger body class 'menu-hidden' to change, hence show or hide Menu
         it('Menu shows / hides when menu icon is clicked', function() {
             $('.menu-icon-link').trigger('click');
-            expect($('body').hasClass('menu-hidden')).toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBeFalsy();
 
             // Second menu icon click to hide menu
             $('.menu-icon-link').trigger('click');
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
 
     });
