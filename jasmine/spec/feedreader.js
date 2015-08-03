@@ -68,7 +68,6 @@ $(function() {
         // initialize DOM before test run
         beforeEach(function() {
             $(document).ready(function(){
-                init();
             });
         });
 
@@ -89,10 +88,12 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-        // it('Menu shows / hides when menu icon is clicked', function() {
-        //     $('.menu-icon-link').toggleClass();
-        //     expect($('.body').hasClass('menu-hidden')).toBeTruthy(); 
-        //  });
+        it('Menu shows / hides when menu icon is clicked', function() {
+            var menuIcon = $('.menu-icon-link');
+            spyOn(menuIcon, 'toggleClass'); // toggleClass function triggers CSS selector 'menu-hidden' to run
+            menuIcon.toggleClass();
+            expect(menuIcon.toggleClass).toHaveBeenCalled(); // test if function toggleClass has been called
+         });
 
     });
 
