@@ -64,8 +64,12 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe ('Menu', function() {
+
+        // initialize DOM before test run
         beforeEach(function() {
-            init(); // initialize DOM before testing
+            $(document).ready(function(){
+                init();
+            });
         });
 
         /* TODO: Write a test that ensures the menu element is
@@ -73,9 +77,10 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-         it('Menu is hidden when DOM is loaded', function() {
-            expect($('body').hasClass('menu-hidden')).toBeTruthy(); 
-            // Default 'menu-hidden' CSS selector hides Menu to the left of screen by 12em
+
+        // Default 'menu-hidden' CSS selector hides Menu to the left of screen by 12em
+        it('Menu is hidden when DOM is loaded', function() {
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -83,7 +88,12 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          
+
+        // it('Menu shows / hides when menu icon is clicked', function() {
+        //     $('.menu-icon-link').toggleClass();
+        //     expect($('.body').hasClass('menu-hidden')).toBeTruthy(); 
+        //  });
+
     });
 
 
