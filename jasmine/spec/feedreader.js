@@ -26,44 +26,42 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-         // Test URL to match HTTP Regex
-         function testURLisNotEmpty(allFeeds) {
+        // Test URL to match HTTP Regex
+        function testURLisNotEmpty(allFeeds) {
             expect(allFeeds.url).toMatch(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:ww‌​w.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?‌​(?:[\w]*))?)/);
-         }
+        }
 
-         // Iterate allFeeds array to perform check
-         it('has URL link in each feed', function() {
+        // Iterate allFeeds array to perform check
+        it('has URL link in each feed', function() {
             for (var i = 0, len = allFeeds.length; i < len; i++) {
                 testURLisNotEmpty(allFeeds[i]);
             }
-         });
+        });
 
-         // Two test performed to check Name to be defined and not empty
-         function testNameisDefinedandNotEmpty(allFeeds) {
+        // Two test performed to check Name to be defined and not empty
+        function testNameisDefinedandNotEmpty(allFeeds) {
             expect(allFeeds.name).toBeDefined(); // First check: to see if allFeeds.name variable is defined
             expect(allFeeds.name.length).not.toEqual(0); // Second check: to see if name exists by checking string length
-         }
+        }
 
-         // Iterate allFeeds array to perform check
-         it('Name is defined and not empty', function() {
+        // Iterate allFeeds array to perform check
+        it('Name is defined and not empty', function() {
             for (var i = 0, len = allFeeds.length; i < len; i++) {
                 testNameisDefinedandNotEmpty(allFeeds[i]);
             }
-         });
-
+        });
     });
-
 
     // Start new suite: "Menu"
     describe ('Menu', function() {
 
         // Default 'menu-hidden' CSS selector hides Menu to the left of screen by 12em
-        it('Menu is hidden when DOM is loaded', function() {
+        it('menu is hidden when DOM is loaded', function() {
             expect($('body').hasClass('menu-hidden')).toBeTruthy();
          });
 
         // Click event trigger body class 'menu-hidden' to change, hence show or hide Menu
-        it('Menu shows / hides when menu icon is clicked', function() {
+        it('menu shows / hides when menu icon is clicked', function() {
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass('menu-hidden')).toBeFalsy();
 
@@ -71,9 +69,7 @@ $(function() {
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
-
     });
-
 
     // Start new suite: "Initial Entries"
     describe('Initial Entries', function() {
@@ -91,31 +87,29 @@ $(function() {
             expect(entries.length).toBeGreaterThan(0);
             done();
         });
-
     });
 
     // Start new suite: "New Feed Selection"
     describe('New Feed Selection', function() {
 
-        // Ensure content has changed when new feed is loaded
+        // Declare two variables for comparison test
         var oldFeed, newFeed;
 
+        // Load the default feed before running test
         beforeEach(function(done) {
-            loadFeed(0);
-            setTimeout(function() {
+            loadFeed(0, function() {
                 oldFeed = $('.feed').html();
                 done();
-            }, 1);
+            });
         });
-        
-        it('content changes as a new feed is loaded', function() {
-            loadFeed(1);
-            setTimeout(function() {
+
+        // Load second feed and test oldFeed vs newFeed
+        it('content changes as a new feed is loaded', function(done) {
+            loadFeed(1, function() {
                 newFeed = $('.feed').html();
-            }, 1);
-            expect(oldFeed).not.toEqual(newFeed);
+                expect(oldFeed).not.toEqual(newFeed);
+                done();
+            });
         });
-
     });
-
 }());
