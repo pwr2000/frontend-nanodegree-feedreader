@@ -26,28 +26,19 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
-
-         // Expect URL to match HTTP Regex
+         // Test URL to match HTTP Regex
          function testURLisNotEmpty(allFeeds) {
             expect(allFeeds.url).toMatch(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:ww‌​w.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?‌​(?:[\w]*))?)/);
          }
 
          // Iterate allFeeds array to perform check
          it('has URL link in each feed', function() {
-            for (i = 0; i < allFeeds.length; i++) {
+            for (var i = 0, len = allFeeds.length; i < len; i++) {
                 testURLisNotEmpty(allFeeds[i]);
             }
          });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+         // Two test performed to check Name to be defined and not empty
          function testNameisDefinedandNotEmpty(allFeeds) {
             expect(allFeeds.name).toBeDefined(); // First check: to see if allFeeds.name variable is defined
             expect(allFeeds.name.length).not.toEqual(0); // Second check: to see if name exists by checking string length
@@ -55,7 +46,7 @@ $(function() {
 
          // Iterate allFeeds array to perform check
          it('Name is defined and not empty', function() {
-            for (i = 0; i < allFeeds.length; i++) {
+            for (var i = 0, len = allFeeds.length; i < len; i++) {
                 testNameisDefinedandNotEmpty(allFeeds[i]);
             }
          });
@@ -63,25 +54,13 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    // Start new suite: "Menu"
     describe ('Menu', function() {
-
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
 
         // Default 'menu-hidden' CSS selector hides Menu to the left of screen by 12em
         it('Menu is hidden when DOM is loaded', function() {
             expect($('body').hasClass('menu-hidden')).toBeTruthy();
          });
-
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
 
         // Click event trigger body class 'menu-hidden' to change, hence show or hide Menu
         it('Menu shows / hides when menu icon is clicked', function() {
@@ -96,15 +75,8 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+    // Start new suite: "Initial Entries"
     describe('Initial Entries', function() {
-
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test wil require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
 
         // Set beforeEach function for async support
         beforeEach(function(done) {
@@ -122,13 +94,8 @@ $(function() {
 
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    // Start new suite: "New Feed Selection"
     describe('New Feed Selection', function() {
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
 
         // Ensure content has changed when new feed is loaded
         var oldFeed, newFeed;
