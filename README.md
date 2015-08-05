@@ -2,6 +2,12 @@
 
 Check out GitHub Page: [P6 project link](http://pwr2000.github.io/frontend-nanodegree-feedreader/)
 
+
+## Improvements:
+1. Test coverage: refactor setTimeout to using callback
+2. Code quality: declare var in iteration functions
+
+
 ## Jasmine Implementations
 
 1. Expectation matchers:
