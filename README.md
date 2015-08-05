@@ -1,3 +1,28 @@
+# P6 Project Submission
+
+Check out GitHub Page: [P6 project link](http://pwr2000.github.io/frontend-nanodegree-feedreader/)
+
+## Jasmine Implementations
+
+1. Expectation matchers:
+  * toBeDefined()
+  * not.toBe()
+  * toMatch()
+  * not.toEqual()
+  * toBeTruthy()
+  * toBeFalsy()
+  * toBeGreaterThan()
+2. HTTP Regular Expression to check allFeeds URL
+3. jQuery functions:
+  * .trigger()
+  * .hasClass()
+  * .children()
+4. Async supports:
+  * beforeEach
+  * done()
+
+
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
